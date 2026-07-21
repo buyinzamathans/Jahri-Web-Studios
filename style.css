@@ -1,0 +1,83 @@
+[1:48 AM, 7/22/2026] Buyinza Mathan John: /* Clears default spacing and sets the font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif; /* A clean, modern sans-serif */
+}
+
+body {
+    background-color: #050505; /* The deep black background */
+    color: #ffffff; /* Default text color */
+}
+
+/* Our signature gold/amber color class */
+.gold-text {
+    color: #f5b342;
+}
+[1:49 AM, 7/22/2026] Buyinza Mathan John: .top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 50px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none; /* Removes the bullet points */
+    display: flex;
+    gap: 30px; /* Creates even spacing between the links */
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+/* Highlights the "SERVICES" link in gold like the flyer */
+.nav-links a[href="#services"] {
+    color: #f5b342; 
+}
+[1:49 AM, 7/22/2026] Buyinza Mathan John: .hero-section {
+    padding: 80px 50px;
+}
+
+.hero-section h1 {
+    font-size: 4.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.1rem;
+    color: #b3b3b3; /* Slightly dimmed white for paragraphs */
+    max-width: 500px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* The Call to Action Button */
+.btn-primary {
+    display: inline-block;
+    background-color: transparent;
+    color: #f5b342;
+    border: 2px solid #f5b342;
+    padding: 12px 35px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: 0.3s ease; /* Makes the hover effect smooth */
+}
+
+/* Fills the button with gold when hovered */
+.btn-primary:hover {
+    background-color: #f5b342;
+    color: #000000;
+}
