@@ -18,7 +18,7 @@
     
     /* Pattern Settings (Easily swap or disable image here) */
     --bg-pattern-url: url('pattern.png'); /* Replace with your pattern image path */
-    --pattern-opacity: 0.08; /* Subtle background pattern strength */
+    --pattern-opacity: 0.15; /* Subtle background pattern strength */
 
     /* Universal Animations */
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
