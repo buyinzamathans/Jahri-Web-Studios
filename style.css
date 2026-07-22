@@ -81,3 +81,52 @@ body {
     background-color: #f5b342;
     color: #000000;
 }
+/* Services Section Background */
+.services-section {
+    padding: 80px 50px;
+    background-color: #0a0a0a; /* A slightly lighter black to separate it from the hero */
+}
+
+.section-header h2 {
+    font-size: 3rem;
+    margin-bottom: 50px;
+}
+
+/* The Magic of CSS Grid */
+.services-grid {
+    display: grid;
+    /* This line automatically fits as many 300px cards as possible in a row */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* Space between the cards */
+}
+
+/* Individual Card Styling */
+.service-card {
+    background-color: #111111; /* Dark gray for the card */
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 3px solid #f5b342; /* A subtle gold line on the left side */
+    transition: transform 0.3s ease; /* Prepares the hover effect */
+}
+
+/* Makes the card float up slightly when you hover over it */
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-card .icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.service-card p {
+    color: #b3b3b3;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
