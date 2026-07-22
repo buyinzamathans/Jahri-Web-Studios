@@ -17,7 +17,7 @@
     --text-muted: #b0b0b0;
     
     /* Pattern Settings (Easily swap or disable image here) */
-    --bg-pattern-url: url('pattern.jpg'); /* Replace with your pattern image path */
+    --bg-pattern-url: url('pattern.png'); /* Replace with your pattern image path */
     --pattern-opacity: 0.08; /* Subtle background pattern strength */
 
     /* Universal Animations */
