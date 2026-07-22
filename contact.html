@@ -10,10 +10,17 @@
 
     <nav class="navbar">
         <a href="index.html" class="brand">
-            <img src="logo.png" alt="Jahri Logo" class="logo-img">
+            <img src="logo.png" alt="Jahri Logo" class="logo-img" onerror="this.style.display='none'">
             <span class="brand-name">JAHRI<span class="gold-text">.</span></span>
         </a>
-        <ul class="nav-links">
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="services.html">Services</a></li>
@@ -27,15 +34,14 @@
         <p>Bring your business online today.</p>
     </div>
 
-    <section class="container fade-in-up delay-1" style="text-align: center; max-width: 600px;">
-        <div class="card" style="border-color: var(--gold);">
-            <h2>Direct WhatsApp Integration</h2>
-            <p style="color: var(--text-muted); margin: 20px 0;">Chat with our Creative Director directly to start scoping out your digital presence.</p>
+    <section class="container fade-in-up delay-1" style="display: flex; justify-content: center;">
+        <div class="card" style="border-color: var(--gold); text-align: center; max-width: 500px; width: 100%;">
+            <h2 style="font-size: 1.8rem;">Direct WhatsApp Integration</h2>
+            <p style="color: var(--text-muted); margin: 20px 0; line-height: 1.6;">Chat with our Creative Director directly to start scoping out your digital presence. No automated bots—just real strategy.</p>
             
-            <h3 class="gold-text" style="font-size: 2rem; margin: 20px 0;">078 953 7954</h3>
+            <h3 class="gold-text" style="font-size: 2.5rem; margin: 30px 0; letter-spacing: 1px;">078 953 7954</h3>
             
-            <!-- Replace the # with a real wa.me link -->
-            <a href="https://wa.me/256789537954" class="btn" target="_blank">Chat on WhatsApp</a>
+            <a href="https://wa.me/256789537954" class="btn" target="_blank" style="width: 100%;">Open Chat on WhatsApp</a>
         </div>
     </section>
 
@@ -44,5 +50,14 @@
         <p style="margin-top: 15px; font-size: 0.8rem; color: var(--gold); letter-spacing: 2px;">CREATIVE. PROFESSIONAL. RELIABLE.</p>
     </footer>
 
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('is-active'); 
+        });
+    </script>
 </body>
 </html>
