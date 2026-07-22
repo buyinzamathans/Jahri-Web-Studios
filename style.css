@@ -2,17 +2,29 @@
    JAHRI WEB STUDIOS - MASTER STYLESHEET
    ========================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
+    /* Brand Palette */
     --bg-dark: #050505;
-    --bg-card: #111111;
+    --bg-card: rgba(17, 17, 17, 0.85);
     --gold: #f5b342;
+    --gold-glow: rgba(245, 179, 66, 0.3);
+    --gold-subtle: rgba(245, 179, 66, 0.1);
+    
+    /* Text Hierarchy */
     --text-main: #ffffff;
-    --text-muted: #a0a0a0;
+    --text-muted: #b0b0b0;
+    
+    /* Pattern Settings (Easily swap or disable image here) */
+    --bg-pattern-url: url('pattern.jpg'); /* Replace with your pattern image path */
+    --pattern-opacity: 0.08; /* Subtle background pattern strength */
+
+    /* Universal Animations */
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+/* --- BASE RESETS & SETUP --- */
 * {
     margin: 0;
     padding: 0;
@@ -20,10 +32,33 @@
     font-family: 'Poppins', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
     overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Subtle Global Pattern Overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--bg-pattern-url);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: var(--pattern-opacity);
+    z-index: -1;
+    pointer-events: none;
 }
 
 .gold-text { color: var(--gold); }
@@ -33,25 +68,27 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 5% 15px;
-    background-color: rgba(5, 5, 5, 0.95);
+    padding: 20px 5%;
+    background-color: rgba(5, 5, 5, 0.85);
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(245, 179, 66, 0.1);
-    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--gold-subtle);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .brand {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     text-decoration: none;
 }
 
 .logo-img {
-    height: 45px;
+    height: 40px;
     width: auto;
+    object-fit: contain;
 }
 
 .brand-name {
@@ -70,34 +107,38 @@ body {
 .nav-links a {
     color: var(--text-main);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 1px;
     transition: var(--transition);
     position: relative;
 }
 
-/* Artistic underline hover effect for links */
+/* Artistic Underline Hover */
 .nav-links a::after {
     content: '';
     position: absolute;
     width: 0;
     height: 2px;
-    bottom: -5px;
+    bottom: -6px;
     left: 0;
     background-color: var(--gold);
     transition: var(--transition);
+    box-shadow: 0 0 8px var(--gold);
 }
 
-.nav-links a:hover::after, .nav-links a.active::after {
+.nav-links a:hover::after, 
+.nav-links a.active::after {
     width: 100%;
 }
 
-.nav-links a:hover, .nav-links a.active {
+.nav-links a:hover, 
+.nav-links a.active {
     color: var(--gold);
 }
 
-/* --- FUTURISTIC MOBILE MENU ICON --- */
+/* --- MOBILE MENU TOGGLE --- */
 .menu-toggle {
     display: none; 
     flex-direction: column;
@@ -111,23 +152,23 @@ body {
     height: 2px; 
     background-color: var(--gold); 
     border-radius: 4px;
-    box-shadow: 0 0 8px rgba(245, 179, 66, 0.4); 
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+    box-shadow: 0 0 8px var(--gold-glow); 
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
 }
 
-.menu-toggle .bar:nth-child(1) { width: 32px; transform-origin: left center; }
+.menu-toggle .bar:nth-child(1) { width: 30px; transform-origin: left center; }
 .menu-toggle .bar:nth-child(2) { width: 20px; align-self: flex-end; }
-.menu-toggle .bar:nth-child(3) { width: 32px; transform-origin: left center; }
+.menu-toggle .bar:nth-child(3) { width: 30px; transform-origin: left center; }
 
-/* The 'X' Morph State */
+/* Mobile Menu 'X' Animation */
 .menu-toggle.is-active .bar:nth-child(1) {
-    transform: rotate(45deg) translate(3px, -3px);
-    box-shadow: 0 0 12px rgba(245, 179, 66, 0.8); 
+    transform: rotate(45deg) translate(3px, -2px);
+    box-shadow: 0 0 12px var(--gold); 
 }
 .menu-toggle.is-active .bar:nth-child(2) { width: 0; opacity: 0; }
 .menu-toggle.is-active .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(2px, 3px);
-    box-shadow: 0 0 12px rgba(245, 179, 66, 0.8);
+    transform: rotate(-45deg) translate(2px, 2px);
+    box-shadow: 0 0 12px var(--gold);
 }
 
 @media (max-width: 768px) {
@@ -141,10 +182,11 @@ body {
         background-color: rgba(10, 10, 10, 0.98); 
         flex-direction: column;
         align-items: center;
-        padding: 30px 0;
+        padding: 40px 0;
         border-bottom: 2px solid var(--gold);
         display: none; 
-        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+        backdrop-filter: blur(10px);
     }
 
     .nav-links.active { display: flex; }
@@ -160,10 +202,143 @@ body {
         font-size: 1.1rem;
         padding: 10px;
     }
-    .nav-links a::after { display: none; /* Removes underline on mobile */ }
+    .nav-links a::after { display: none; }
 }
 
-/* --- ANIMATIONS (Movements) --- */
+/* --- STUDIO SUBTITLE BANNER --- */
+.studio-banner {
+    background-color: rgba(17, 17, 17, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 10px 5%;
+    text-align: left;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .studio-banner {
+        text-align: center;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+    }
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5%;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    line-height: 1.08;
+    margin-bottom: 25px;
+    letter-spacing: -1.5px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 580px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 3.2rem; }
+    .hero p { font-size: 1rem; }
+}
+
+/* --- BUTTONS --- */
+.btn {
+    display: inline-block;
+    padding: 14px 38px;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    box-shadow: 0 0 15px var(--gold-subtle);
+}
+
+.btn:hover {
+    background-color: var(--gold);
+    color: var(--bg-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px var(--gold-glow);
+}
+
+/* --- CARDS & GRIDS --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.card:hover::before { opacity: 1; }
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(245, 179, 66, 0.25);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+/* --- PAGE HEADERS --- */
+.page-header {
+    text-align: center;
+    padding: 100px 20px 60px;
+    background: linear-gradient(180deg, rgba(17,17,17,0.8) 0%, rgba(5,5,5,0) 100%);
+}
+
+.page-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+@media (max-width: 768px) {
+    .page-header h1 { font-size: 2.4rem; }
+}
+
+/* --- ANIMATIONS --- */
 .fade-in-up {
     animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     opacity: 0;
@@ -180,209 +355,13 @@ body {
     }
 }
 
-/* --- BUTTONS --- */
-.btn {
-    display: inline-block;
-    padding: 12px 35px;
-    border: 2px solid var(--gold);
-    color: var(--gold);
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 4px;
-    transition: var(--transition);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 0 10px rgba(245, 179, 66, 0.1);
-}
-
-.btn:hover {
-    background-color: var(--gold);
-    color: var(--bg-dark);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(245, 179, 66, 0.3);
-}
-
-/* --- SHARED PAGE LAYOUT --- */
-.page-header {
-    text-align: center;
-    padding: 100px 20px 60px;
-    background: linear-gradient(180deg, rgba(17,17,17,1) 0%, rgba(5,5,5,1) 100%);
-    position: relative;
-}
-
-/* Artistic grid background effect */
-.page-header::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 20px 20px;
-    z-index: 0;
-}
-
-.page-header h1, .page-header p {
-    position: relative;
-    z-index: 1;
-}
-
-.page-header h1 {
-    font-size: 3.5rem;
-    margin-bottom: 15px;
-    letter-spacing: -1px;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 50px 20px;
-}
-
-/* --- HERO SECTION (Index) --- */
-.hero {
-    height: 85vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 5%;
-    position: relative;
-}
-
-.hero h1 {
-    font-size: 5.5rem;
-    line-height: 1.05;
-    margin-bottom: 25px;
-    letter-spacing: -2px;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    max-width: 600px;
-    margin-bottom: 40px;
-    line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-    .hero h1 { font-size: 3.5rem; }
-    .page-header h1 { font-size: 2.5rem; }
-}
-
-/* --- CARDS & GRIDS --- */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.card {
-    background-color: var(--bg-card);
-    padding: 40px;
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-}
-
-/* Artistic glow line at the top of cards */
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 3px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    opacity: 0;
-    transition: var(--transition);
-}
-
-.card:hover::before { opacity: 1; }
-
-.card:hover {
-    transform: translateY(-10px);
-    border-color: rgba(245, 179, 66, 0.3);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-}
-
-/* --- ABOUT PAGE SPECIFICS --- */
-.about-content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    align-items: center;
-}
-
-.about-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-.about-text h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.about-text p {
-    color: var(--text-muted);
-    line-height: 1.8;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-}
-
-.about-stats {
-    flex: 1;
-    min-width: 300px;
-    background: linear-gradient(135deg, #111 0%, #050505 100%);
-    border: 1px solid var(--gold);
-    padding: 40px;
-    border-radius: 12px;
-}
-
-/* --- PROJECTS COMING SOON --- */
-.coming-soon-wrapper {
-    text-align: center;
-    padding: 100px 20px;
-}
-
-.loader {
-    width: 60px;
-    height: 60px;
-    border: 3px solid rgba(245, 179, 66, 0.1);
-    border-radius: 50%;
-    border-top-color: var(--gold);
-    border-right-color: var(--gold);
-    animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
-    margin: 0 auto 30px;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
 /* --- FOOTER --- */
 footer {
-    background-color: var(--bg-card);
-    padding: 50px 5%;
+    background-color: rgba(17, 17, 17, 0.9);
+    padding: 40px 5%;
     text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    margin-top: 50px;
-}
-/* --- STUDIO BANNER SUBTITLE --- */
-.studio-banner {
-    background-color: rgba(17, 17, 17, 0.6);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    padding: 10px 5%;
-    text-align: left;
-    font-size: 0.75rem;
-    letter-spacing: 3px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 60px;
+    font-size: 0.9rem;
     color: var(--text-muted);
-    text-transform: uppercase;
-}
-
-@media (max-width: 768px) {
-    .studio-banner {
-        text-align: center; /* Centers it nicely on mobile phones */
-        font-size: 0.7rem;
-        letter-spacing: 2px;
-    }
 }
