@@ -10,10 +10,17 @@
 
     <nav class="navbar">
         <a href="index.html" class="brand">
-            <img src="logo.png" alt="Jahri Logo" class="logo-img">
+            <img src="logo.png" alt="Jahri Logo" class="logo-img" onerror="this.style.display='none'">
             <span class="brand-name">JAHRI<span class="gold-text">.</span></span>
         </a>
-        <ul class="nav-links">
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="services.html" class="active">Services</a></li>
@@ -30,26 +37,40 @@
     <section class="container grid fade-in-up delay-1">
         
         <div class="card">
-            <h3 class="gold-text">🌐 Professional Websites</h3>
-            <p><br>Clean, modern and responsive websites that represent your brand perfectly.</p>
+            <h3 class="gold-text" style="font-size: 1.2rem; margin-bottom: 10px;">🌐 Professional Websites</h3>
+            <p style="color: var(--text-muted); line-height: 1.6;">Clean, modern and responsive websites that represent your brand perfectly and load seamlessly across all devices.</p>
         </div>
 
         <div class="card">
-            <h3 class="gold-text">🛒 Online Stores</h3>
-            <p><br>Sell your products online with secure and easy to manage e-commerce platforms.</p>
+            <h3 class="gold-text" style="font-size: 1.2rem; margin-bottom: 10px;">🛒 Online Stores</h3>
+            <p style="color: var(--text-muted); line-height: 1.6;">Sell your products online with secure, robust, and easy-to-manage e-commerce platforms designed for conversion.</p>
         </div>
 
         <div class="card">
-            <h3 class="gold-text">📍 Google Business Setup</h3>
-            <p><br>Get your business found quickly on Google Search & Maps.</p>
+            <h3 class="gold-text" style="font-size: 1.2rem; margin-bottom: 10px;">📍 Google Business Setup</h3>
+            <p style="color: var(--text-muted); line-height: 1.6;">Maximize your local visibility. Get your business verified and found quickly on Google Search & Maps.</p>
         </div>
 
         <div class="card">
-            <h3 class="gold-text">📱 Social Media Flyers</h3>
-            <p><br>Eye-catching designs for your business, events, and promotions.</p>
+            <h3 class="gold-text" style="font-size: 1.2rem; margin-bottom: 10px;">📱 Social Media Assets</h3>
+            <p style="color: var(--text-muted); line-height: 1.6;">Eye-catching, high-resolution flyer and poster designs engineered for your business events and digital promotions.</p>
         </div>
 
     </section>
 
+    <footer>
+        <p>📧 jahriwebstudio@gmail.com | 📍 Based in Uganda</p>
+        <p style="margin-top: 15px; font-size: 0.8rem; color: var(--gold); letter-spacing: 2px;">CREATIVE. PROFESSIONAL. RELIABLE.</p>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('is-active'); 
+        });
+    </script>
 </body>
 </html>
