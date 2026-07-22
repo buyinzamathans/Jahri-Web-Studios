@@ -10,10 +10,17 @@
 
     <nav class="navbar">
         <a href="index.html" class="brand">
-            <img src="logo.png" alt="Jahri Logo" class="logo-img">
+            <img src="logo.png" alt="Jahri Logo" class="logo-img" onerror="this.style.display='none'">
             <span class="brand-name">JAHRI<span class="gold-text">.</span></span>
         </a>
-        <ul class="nav-links">
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="services.html">Services</a></li>
@@ -29,13 +36,26 @@
 
     <section class="container coming-soon-wrapper fade-in-up delay-1">
         <div class="loader"></div>
-        <h2>Portfolio Updating</h2>
-        <p style="color: var(--text-muted); margin-top: 15px; max-width: 500px; margin-left: auto; margin-right: auto;">
-            We are currently curating our latest case studies and client projects. We will be uploading them shortly. 
+        <h2 style="font-size: 2rem; margin-bottom: 10px;">Portfolio Updating</h2>
+        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 500px; margin: 0 auto 30px;">
+            We are currently curating our latest case studies, interface designs, and client platforms. The archives will be unlocked shortly. 
         </p>
-        <br>
         <a href="services.html" class="btn">View Our Services Meanwhile</a>
     </section>
 
+    <footer>
+        <p>📧 jahriwebstudio@gmail.com | 📍 Based in Uganda</p>
+        <p style="margin-top: 15px; font-size: 0.8rem; color: var(--gold); letter-spacing: 2px;">CREATIVE. PROFESSIONAL. RELIABLE.</p>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('is-active'); 
+        });
+    </script>
 </body>
 </html>
