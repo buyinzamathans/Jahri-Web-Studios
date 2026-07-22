@@ -367,3 +367,22 @@ footer {
     border-top: 1px solid rgba(255,255,255,0.05);
     margin-top: 50px;
 }
+/* --- STUDIO BANNER SUBTITLE --- */
+.studio-banner {
+    background-color: rgba(17, 17, 17, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 10px 5%;
+    text-align: left;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .studio-banner {
+        text-align: center; /* Centers it nicely on mobile phones */
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+    }
+}
